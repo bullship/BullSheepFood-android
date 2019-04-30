@@ -1,6 +1,10 @@
 package com.bullsheep.bullsheepfood_android.ui.stats;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,18 +66,29 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.StatsViewHol
         stats.add(new PieEntry(1040f, "Proteins"));
         stats.add(new PieEntry(1133f, "Fats"));
         PieDataSet dataSet = new PieDataSet(stats, null);
+        dataSet.setSliceSpace(3f);
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
 
         PieData data = new PieData(dataSet);
         data.setValueFormatter(valueFormatter);
         data.setValueTextSize(14);
         data.setValueTextColor(Color.WHITE);
+
         chart.setUsePercentValues(true);
         chart.setData(data);
         chart.setDescription(null);
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         chart.getLegend().setEnabled(false);
         chart.setNoDataText("No data found");
+        chart.setCenterText(generateCenterSpannableText());
         chart.animateXY(1000, 1000);
+    }
+
+    private SpannableString generateCenterSpannableText() {
+        // TODO: 30.04.19  replace with actual value of kcal
+        SpannableString styledString = new SpannableString("2222 kcal");
+        styledString.setSpan(new RelativeSizeSpan(1.7f), 0, styledString.length(), 0);
+        styledString.setSpan(new StyleSpan(Typeface.ITALIC), 0, styledString.length(), 0);
+        return styledString;
     }
 
     @Override
