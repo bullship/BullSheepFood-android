@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">BullSheepFood</string>
+    <string name="scan_item">Scan item</string>
+    <string name="add_item">Add item</string>
+    <string name="add_schedule">Add schedule</string>
     <string-array name="days_of_week">
         <item>Monday</item>
         <item>Tuesday</item>

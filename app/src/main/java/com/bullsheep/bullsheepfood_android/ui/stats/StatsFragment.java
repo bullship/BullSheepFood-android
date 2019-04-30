@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bullsheep.bullsheepfood_android.R;
+import com.bullsheep.bullsheepfood_android.ui.stats.actions.ActionDialogFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Arrays;
 
@@ -24,7 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * amount of proteins, fats and carbs.
  */
 public class StatsFragment extends Fragment {
-
+    private FloatingActionButton addButton;
 
     public StatsFragment() {
         // Required empty public constructor
@@ -40,6 +42,19 @@ public class StatsFragment extends Fragment {
     }
 
     private void initUi(View rootView) {
+        setupRecycler(rootView);
+
+        addButton = rootView.findViewById(R.id.add_fab);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View currentView) {
+                ActionDialogFragment actionDialogFragment = new ActionDialogFragment();
+                actionDialogFragment.show(getChildFragmentManager(), null);
+            }
+        });
+    }
+
+    private void setupRecycler(View rootView) {
         RecyclerView statsList = rootView.findViewById(R.id.stats__recycler);
         statsList.setLayoutManager(new LinearLayoutManager(rootView.getContext(), RecyclerView.VERTICAL, false));
 

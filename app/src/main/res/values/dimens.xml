@@ -2,4 +2,5 @@
 <resources>
     <dimen name="small_margin">8dp</dimen>
     <dimen name="stats_recycler_bottom_margin">64dp</dimen>
+    <dimen name="large_margin">16dp</dimen>
 </resources>
