@@ -23,7 +23,6 @@ public class ActionDialogFragment extends AppCompatDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         configureDialog();
         return inflater.inflate(R.layout.fragment_action_dialog, container);
     }
@@ -36,6 +35,7 @@ public class ActionDialogFragment extends AppCompatDialogFragment {
             WindowManager.LayoutParams layoutParams = getDialog().getWindow().getAttributes();
             layoutParams.y = (int) (BOTTOM_MARGIN_IN_DP * Resources.getSystem().getDisplayMetrics().density);
             window.setAttributes(layoutParams);
+            getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 
         }
     }
