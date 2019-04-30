@@ -1,9 +1,11 @@
 package com.bullsheep.bullsheepfood_android.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.bullsheep.bullsheepfood_android.R;
+import com.bullsheep.bullsheepfood_android.ui.stats.StatsFragment;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // last visible fragment is always retained. if there are no such - show main fragment
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
