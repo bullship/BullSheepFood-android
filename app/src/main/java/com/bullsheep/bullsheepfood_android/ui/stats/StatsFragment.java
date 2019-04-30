@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.bullsheep.bullsheepfood_android.R;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -41,11 +41,9 @@ public class StatsFragment extends Fragment {
     private void initUi(View rootView) {
         RecyclerView statsList = rootView.findViewById(R.id.stats__recycler);
         statsList.setLayoutManager(new LinearLayoutManager(rootView.getContext(), RecyclerView.VERTICAL, false));
-        ArrayList<String> statsData = new ArrayList<>();
-        // TODO: 30.04.19 Replace with real data
-        statsData.add("Monday");
-        statsData.add("Tuesday");
-        statsList.setAdapter(new StatsAdapter(statsData));
+        // TODO: 30.04.19 Replace with real data(object with day & statistics)
+        String[] daysOfWeek = rootView.getResources().getStringArray(R.array.days_of_week);
+        statsList.setAdapter(new StatsAdapter(Arrays.asList(daysOfWeek)));
     }
 
     @Override
