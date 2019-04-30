@@ -9,12 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.bullsheep.bullsheepfood_android.R;
+import com.bullsheep.bullsheepfood_android.ui.AddFoodFragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * Actions menu for FAB
@@ -23,11 +26,19 @@ public class ActionDialogFragment extends AppCompatDialogFragment {
 
     private static final int BOTTOM_MARGIN_IN_DP = 75;
 
+    private TextView addItemTv;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         configureDialog();
         return inflater.inflate(R.layout.fragment_action_dialog, container);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initUI(view);
     }
 
     private void configureDialog() {
@@ -40,6 +51,29 @@ public class ActionDialogFragment extends AppCompatDialogFragment {
             window.setAttributes(layoutParams);
             getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 
+        }
+    }
+
+    private void initUI(View view) {
+        addItemTv = view.findViewById(R.id.add_item);
+        initClickListeners();
+    }
+
+    private void initClickListeners() {
+        addItemTv.setOnClickListener(view -> {
+            startFragment(new AddFoodFragment());
+            dismiss();
+        });
+    }
+
+    private void startFragment(Fragment fragment) {
+        if (getActivity() != null) {
+            getActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
         }
     }
 }
