@@ -36,6 +36,8 @@ public class StatsFragment extends Fragment {
     public void onViewCreated(@NonNull View rootView, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(rootView, savedInstanceState);
         AppCompatActivity currentActivity = (AppCompatActivity) getActivity();
-        currentActivity.setSupportActionBar((Toolbar) rootView.findViewById(R.id.bottom_app_bar));
+        if (currentActivity != null) {
+            currentActivity.setSupportActionBar((Toolbar) rootView.findViewById(R.id.bottom_app_bar));
+        }
     }
 }
