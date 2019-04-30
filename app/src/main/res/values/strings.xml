@@ -3,6 +3,9 @@
     <string name="scan_item">Scan item</string>
     <string name="add_item">Add item</string>
     <string name="add_schedule">Add schedule</string>
+    <string name="stats">Stats</string>
+    <string name="schedule">Schedule</string>
+    <string name="scanner">Scanner</string>
     <string-array name="days_of_week">
         <item>Monday</item>
         <item>Tuesday</item>

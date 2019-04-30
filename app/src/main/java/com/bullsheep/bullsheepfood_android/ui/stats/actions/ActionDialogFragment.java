@@ -16,6 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+/**
+ * Actions menu for FAB
+ */
 public class ActionDialogFragment extends AppCompatDialogFragment {
 
     private static final int BOTTOM_MARGIN_IN_DP = 75;
