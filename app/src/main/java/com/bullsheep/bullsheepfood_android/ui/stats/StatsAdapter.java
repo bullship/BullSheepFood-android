@@ -49,6 +49,12 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.StatsViewHol
         setChartData(holder.chart);
     }
 
+    @Override
+    public long getItemId(int position) {
+        // TODO: 30.04.19 Replace after we get objects with ids.
+        return statistics.get(position).hashCode();
+    }
+
     private void setChartData(PieChart chart) {
         ArrayList<PieEntry> stats = new ArrayList<>();
 
@@ -64,8 +70,9 @@ public class StatsAdapter extends RecyclerView.Adapter<StatsAdapter.StatsViewHol
         chart.setUsePercentValues(true);
         chart.setData(data);
         chart.setDescription(null);
-        chart.setDrawEntryLabels(false);
         dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        chart.getLegend().setEnabled(false);
+        chart.setNoDataText("No data found");
         chart.animateXY(1000, 1000);
     }
 

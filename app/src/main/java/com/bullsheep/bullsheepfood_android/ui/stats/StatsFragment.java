@@ -43,7 +43,9 @@ public class StatsFragment extends Fragment {
         statsList.setLayoutManager(new LinearLayoutManager(rootView.getContext(), RecyclerView.VERTICAL, false));
         // TODO: 30.04.19 Replace with real data(object with day & statistics)
         String[] daysOfWeek = rootView.getResources().getStringArray(R.array.days_of_week);
-        statsList.setAdapter(new StatsAdapter(Arrays.asList(daysOfWeek)));
+        StatsAdapter adapter = new StatsAdapter(Arrays.asList(daysOfWeek));
+        adapter.setHasStableIds(true);
+        statsList.setAdapter(adapter);
     }
 
     @Override
