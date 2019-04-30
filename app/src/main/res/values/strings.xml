@@ -12,4 +12,13 @@
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
+    <string name="fragment_add_food_label_name">Name</string>
+    <string name="fragment_add_food_proteins_name">Proteins</string>
+    <string name="fragment_add_food_fats_name">Fats</string>
+    <string name="fragment_add_food_carbs_name">Carbs</string>
+    <string name="fragment_add_food_kcal_name">kCal</string>
+
+    <string name="label_submit">Submit</string>
+
+    <string name="error_field_required">This field is required</string>
 </resources>
