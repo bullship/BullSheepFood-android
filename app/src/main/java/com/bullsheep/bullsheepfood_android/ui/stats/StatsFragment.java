@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,11 +42,14 @@ public class StatsFragment extends Fragment {
     private void initUi(View rootView) {
         RecyclerView statsList = rootView.findViewById(R.id.stats__recycler);
         statsList.setLayoutManager(new LinearLayoutManager(rootView.getContext(), RecyclerView.VERTICAL, false));
+
         // TODO: 30.04.19 Replace with real data(object with day & statistics)
         String[] daysOfWeek = rootView.getResources().getStringArray(R.array.days_of_week);
         StatsAdapter adapter = new StatsAdapter(Arrays.asList(daysOfWeek));
         adapter.setHasStableIds(true);
         statsList.setAdapter(adapter);
+
+        statsList.addItemDecoration(new DividerItemDecoration(rootView.getContext(), RecyclerView.VERTICAL));
     }
 
     @Override
