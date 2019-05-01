@@ -34,4 +34,7 @@ dependencies {
 
     // Charts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    // Facebook SDK
+    implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
 }
