@@ -3,7 +3,8 @@
     android:id="@+id/stats__recycler"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
     android:layout_marginStart="@dimen/small_margin"
     android:layout_marginTop="@dimen/small_margin"
     android:layout_marginEnd="@dimen/small_margin"
-    android:layout_marginBottom="@dimen/stats_recycler_bottom_margin" />
+    android:paddingBottom="@dimen/recycler_bottom_margin"/>

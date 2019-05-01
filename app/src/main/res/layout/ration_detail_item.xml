@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -20,5 +22,5 @@
         android:layout_toEndOf="@id/ration_detail_mark_img"
         android:layout_marginStart="@dimen/small_margin"
         android:layout_centerVertical="true"
-        android:text="PlaceHolder" />
+        tools:text="PlaceHolder" />
 </RelativeLayout>
