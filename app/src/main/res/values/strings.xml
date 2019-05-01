@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">BullSheepFood</string>
-    <string name="scan_item">Scan item</string>
     <string name="add_item">Add item</string>
     <string name="add_schedule">Add schedule</string>
     <string name="stats">Stats</string>
@@ -29,4 +28,5 @@
     <string name="carbs_title">Carbs -</string>
     <string name="fats_title">Fats -</string>
     <string name="calories_title">Calories -</string>
+    <string name="or">OR</string>
 </resources>
