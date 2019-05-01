@@ -1,6 +1,7 @@
 package com.bullsheep.bullsheepfood_android.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -8,6 +9,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bullsheep.bullsheepfood_android.R;
+import com.bullsheep.bullsheepfood_android.data.ApiFactory;
+import com.bullsheep.bullsheepfood_android.data.ProductService;
+import com.bullsheep.bullsheepfood_android.model.RecipeResponse;
 import com.bullsheep.bullsheepfood_android.ui.login.LoginFragment;
 import com.bullsheep.bullsheepfood_android.ui.login.LoginListener;
 import com.bullsheep.bullsheepfood_android.ui.ration.RationFragment;
@@ -17,10 +21,15 @@ import com.bullsheep.bullsheepfood_android.ui.utils.ActivityUtils;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.IOException;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements LoginListener {
 

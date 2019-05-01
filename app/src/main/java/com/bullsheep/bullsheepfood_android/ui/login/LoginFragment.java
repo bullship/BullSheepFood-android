@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.bullsheep.bullsheepfood_android.R;
+import com.bullsheep.bullsheepfood_android.data.ApiFactory;
+import com.bullsheep.bullsheepfood_android.data.ProductService;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -59,6 +61,8 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         callbackManager = CallbackManager.Factory.create();
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
+        ProductService apiFactory = ApiFactory.getProductService();
+
         initUi(rootView);
         return rootView;
     }
