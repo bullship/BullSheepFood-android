@@ -2,13 +2,6 @@ package com.bullsheep.bullsheepfood_android.ui.ration;
 
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +12,12 @@ import com.bullsheep.bullsheepfood_android.dto.RationDTO;
 
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,7 +81,7 @@ public class RationFragment extends Fragment {
         rationDTO3.setImageUrl("https://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/53/2019/02/Slimming-Worlds-roast-dinner.jpg");
         rationDTO3.setProducts(Arrays.asList(product, product, product));
 
-        return Arrays.asList(rationDTO, rationDTO1, rationDTO3, rationDTO, rationDTO1, rationDTO3);
+        return Arrays.asList(rationDTO, rationDTO1, rationDTO3);
     }
 
 }
