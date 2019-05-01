@@ -24,4 +24,9 @@
     <string name="label_submit">Submit</string>
 
     <string name="error_field_required">This field is required</string>
+    <string name="title_activity_scan">ScanActivity</string>
+    <string name="protein_title">Protein -</string>
+    <string name="carbs_title">Carbs -</string>
+    <string name="fats_title">Fats -</string>
+    <string name="calories_title">Calories -</string>
 </resources>
