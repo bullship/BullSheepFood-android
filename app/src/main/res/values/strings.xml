@@ -24,4 +24,6 @@
     <string name="label_submit">Submit</string>
 
     <string name="error_field_required">This field is required</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
 </resources>
