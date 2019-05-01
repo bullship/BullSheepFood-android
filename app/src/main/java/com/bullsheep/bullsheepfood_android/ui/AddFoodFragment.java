@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.bullsheep.bullsheepfood_android.R;
+import com.bullsheep.bullsheepfood_android.dto.ProductDTO;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import com.bullsheep.bullsheepfood_android.R;
-import com.bullsheep.bullsheepfood_android.dto.ProductDTO;
 
 
 /**
@@ -71,6 +71,7 @@ public class AddFoodFragment extends Fragment {
         ProductDTO product = readData();
         Log.i(TAG, "submitData: " + product);
         // TODO: 30.04.2019 send to back
+        getActivity().getSupportFragmentManager().popBackStack();
     }
 
     private ProductDTO readData() {
