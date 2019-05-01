@@ -4,17 +4,22 @@
 
     <item android:id="@+id/nav_stats"
         android:icon="@drawable/ic_trending_down"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:title="@string/stats" />
 
     <item android:id="@+id/nav_schedule"
         android:icon="@drawable/ic_schedule"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:title="@string/schedule" />
 
     <item android:id="@+id/nav_scan"
         android:icon="@drawable/ic_scanner"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         android:title="@string/scanner" />
+
+    <item android:id="@+id/nav_ration"
+        android:icon="@drawable/ic_eating_24dp"
+        app:showAsAction="always"
+        android:title="@string/ration" />
 
 </menu>

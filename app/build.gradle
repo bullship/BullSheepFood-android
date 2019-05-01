@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 dependencies {
@@ -23,11 +27,24 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-ml-vision:19.0.3'
+    implementation 'com.google.firebase:firebase-ml-vision-image-label-model:17.0.2'
+
     testImplementation 'junit:junit:4.12'
+
     androidTestImplementation 'androidx.test:runner:1.2.0-alpha04'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha04'
     implementation 'com.google.android.material:material:1.1.0-alpha05'
 
     // Charts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    // Facebook SDK
+    implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
+
+    // Image loading
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
 }
+
+apply plugin: 'com.google.gms.google-services'
