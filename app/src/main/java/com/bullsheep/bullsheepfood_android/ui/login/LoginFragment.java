@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.bullsheep.bullsheepfood_android.R;
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -67,6 +68,11 @@ public class LoginFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         callbackManager = CallbackManager.Factory.create();
+
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (accessToken != null && !accessToken.isExpired()) {
+            loginListener.onFacebookLoginSucceed(accessToken.getToken());
+        }
     }
 
     private void initUi(View rootView) {

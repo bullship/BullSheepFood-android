@@ -19,6 +19,7 @@
         android:backgroundTint="@color/colorPrimary"
         app:hideOnScroll="true"
         app:fabAlignmentMode="end"
+        android:visibility="gone"
         android:layout_gravity="bottom"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -27,6 +28,7 @@
         android:layout_height="wrap_content"
         app:layout_anchor="@id/bottom_app_bar"
         app:fabSize="normal"
+        android:visibility="gone"
         android:src="@drawable/ic_add_24dp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

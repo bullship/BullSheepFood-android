@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.bullsheep.bullsheepfood_android.R;
+import com.bullsheep.bullsheepfood_android.ui.login.LoginFragment;
 import com.bullsheep.bullsheepfood_android.ui.login.LoginListener;
 import com.bullsheep.bullsheepfood_android.ui.ration.RationFragment;
 import com.bullsheep.bullsheepfood_android.ui.stats.StatsFragment;
@@ -28,20 +30,17 @@ public class MainActivity extends AppCompatActivity implements LoginListener {
 
         // last visible fragment is always retained. if there are no such - show main fragment
         if (savedInstanceState == null) {
-            navigateToFragment(new StatsFragment(), false);
+            navigateToFragment(new LoginFragment(), false);
         }
-        initUi();
     }
 
     private void initUi() {
         FloatingActionButton addButton = findViewById(R.id.add_fab);
+        addButton.setVisibility(View.VISIBLE);
         addButton.setOnClickListener(currentView -> {
             ActionDialogFragment actionDialogFragment = new ActionDialogFragment();
             actionDialogFragment.show(getSupportFragmentManager(), null);
         });
-
-        BottomAppBar bottomAppBar = findViewById(R.id.bottom_app_bar);
-        setSupportActionBar(bottomAppBar);
     }
 
     @Override
@@ -84,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements LoginListener {
     public void onFacebookLoginSucceed(String token) {
         // TODO: 01.05.19 Send to backend via ViewModel
         navigateToFragment(new StatsFragment(), false);
+        setupAppBar();
+        initUi();
     }
 
     @Override
@@ -91,5 +92,13 @@ public class MainActivity extends AppCompatActivity implements LoginListener {
         // TODO: 01.05.19 Send to backend via ViewModel
         ActivityUtils.hideKeyboard(this);
         navigateToFragment(new StatsFragment(), false);
+        setupAppBar();
+        initUi();
+    }
+
+    private void setupAppBar() {
+        BottomAppBar bottomAppBar = findViewById(R.id.bottom_app_bar);
+        bottomAppBar.setVisibility(View.VISIBLE);
+        setSupportActionBar(bottomAppBar);
     }
 }
