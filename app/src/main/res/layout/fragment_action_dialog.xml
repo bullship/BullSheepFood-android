@@ -6,22 +6,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
-        android:id="@+id/scan_item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Body1"
-        android:text="@string/scan_item"
-        android:layout_margin="@dimen/large_margin"/>
-
-    <View
-        android:alpha="0.1"
-        android:background="@android:color/black"
-        android:layout_height="1dp"
-        android:layout_width="match_parent"
-        android:layout_marginEnd="@dimen/large_margin"
-        android:layout_marginStart="@dimen/large_margin"/>
-
-    <TextView
         android:id="@+id/add_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

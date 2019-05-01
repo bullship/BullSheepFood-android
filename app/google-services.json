@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "26588889879",
+    "firebase_url": "https://bullsheepfood.firebaseio.com",
+    "project_id": "bullsheepfood",
+    "storage_bucket": "bullsheepfood.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:26588889879:android:e8b45e788d353ee4",
+        "android_client_info": {
+          "package_name": "com.bullsheep.bullsheepfood_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "26588889879-6mo8gmh3vetnba1v0g2g2cp676kb78k8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaQTZZ3ixUaqr9TLMGrtAtLrWY0FJiUJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "26588889879-6mo8gmh3vetnba1v0g2g2cp676kb78k8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

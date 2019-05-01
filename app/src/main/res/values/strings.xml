@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">BullSheepFood</string>
-    <string name="scan_item">Scan item</string>
     <string name="add_item">Add item</string>
     <string name="add_schedule">Add schedule</string>
     <string name="stats">Stats</string>
@@ -30,7 +29,11 @@
     <string name="facebook_app_id">414549609277141</string>
     <string name="fb_login_protocol_scheme">fb414549609277141</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ration">Ration</string>
+    <string name="title_activity_scan">ScanActivity</string>
+    <string name="protein_title">Protein -</string>
+    <string name="carbs_title">Carbs -</string>
+    <string name="fats_title">Fats -</string>
+    <string name="calories_title">Calories -</string>
+    <string name="or">OR</string>
 </resources>
