@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bullsheep.bullsheepfood_android.R;
-import com.bullsheep.bullsheepfood_android.dto.ProductDTO;
 import com.bullsheep.bullsheepfood_android.dto.RationDTO;
+import com.bullsheep.bullsheepfood_android.model.Product;
 
 import java.util.Arrays;
 import java.util.List;
@@ -63,12 +63,7 @@ public class RationFragment extends Fragment {
         rationDTO.setImageUrl("https://media.eggs.ca/assets/RecipePhotos/_resampled/FillWyIxMjgwIiwiNzIwIl0/breafast-tostada-031.jpg");
         rationDTO.setTitle("Breakfast");
 
-        ProductDTO product = new ProductDTO();
-        product.setName("Bread");
-        product.setCarbs(23.5f);
-        product.setFats(23.5f);
-        product.setProteins(23.5f);
-        product.setCal(254.34f);
+        Product product = new Product("Bread", 254.34f, 23.5f, 23.5f, 23.5f);
         rationDTO.setProducts(Arrays.asList(product, product, product));
 
         RationDTO rationDTO1 = new RationDTO();

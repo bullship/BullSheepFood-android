@@ -1,5 +1,7 @@
 package com.bullsheep.bullsheepfood_android.data;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,7 @@ public class ApiFactory {
                     productService = new Retrofit.Builder()
                             .baseUrl(API_ENDPOINT)
                             .addConverterFactory(GsonConverterFactory.create())
+                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                             .client(buildOkHttpClient())
                             .build()
                             .create(ProductService.class);

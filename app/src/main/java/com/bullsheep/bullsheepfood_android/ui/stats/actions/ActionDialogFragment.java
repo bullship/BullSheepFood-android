@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bullsheep.bullsheepfood_android.R;
-import com.bullsheep.bullsheepfood_android.ui.AddFoodFragment;
+import com.bullsheep.bullsheepfood_android.ui.add_food.AddFoodFragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

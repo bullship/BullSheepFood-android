@@ -1,13 +1,11 @@
 package com.bullsheep.bullsheepfood_android.data;
 
-import com.bullsheep.bullsheepfood_android.dto.ProductDTO;
 import com.bullsheep.bullsheepfood_android.model.Product;
 import com.bullsheep.bullsheepfood_android.model.RecipeResponse;
 
 import java.util.List;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
+import io.reactivex.Observable;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -19,18 +17,18 @@ public interface ProductService {
     String API = "api/";
 
     @GET(API + "Food/{ingredientName}")
-    Call<Response<RecipeResponse>> getFood(@Path("ingredientName") String name);
+    Observable<Response<RecipeResponse>> getFood(@Path("ingredientName") String name);
 
     @GET(API + "Product")
-    Call<List<Product>> getAllProducts();
+    Observable<List<Product>> getAllProducts();
 
     @GET(API + "Product/{id}")
-    Call<Product> getProduct(@Path("id") String id);
+    Observable<Product> getProduct(@Path("id") String id);
 
     @PUT(API + "Product")
-    Call<Void> updateProduct(@Body Product product);
+    Observable<Void> updateProduct(@Body Product product);
 
     @POST(API + "Product")
-    Call<Product> create(@Body Product product);
+    Observable<Product> create(@Body Product product);
 
 }

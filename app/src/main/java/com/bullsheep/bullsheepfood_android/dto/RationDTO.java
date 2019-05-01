@@ -1,11 +1,13 @@
 package com.bullsheep.bullsheepfood_android.dto;
 
+import com.bullsheep.bullsheepfood_android.model.Product;
+
 import java.util.List;
 
 public class RationDTO {
     private String imageUrl;
     private String title;
-    private List<ProductDTO> products;
+    private List<Product> products;
 
     public String getImageUrl() {
         return imageUrl;
@@ -23,11 +25,11 @@ public class RationDTO {
         this.title = title;
     }
 
-    public List<ProductDTO> getProducts() {
+    public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<ProductDTO> products) {
+    public void setProducts(List<Product> products) {
         this.products = products;
     }
 }

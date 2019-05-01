@@ -23,17 +23,15 @@ public class Product {
     private double carbohydrate;
 
     @SerializedName("imageUri")
-    private double imageUri;
+    private String imageUri;
 
-    public Product(int id, String name, double kCal, double protein,
-                   double fat, double carbohydrate, double imageUri) {
-        this.id = id;
+    public Product(String name, double kCal, double protein,
+                   double fat, double carbohydrate) {
         this.name = name;
         this.kCal = kCal;
         this.protein = protein;
         this.fat = fat;
         this.carbohydrate = carbohydrate;
-        this.imageUri = imageUri;
     }
 
     public int getId() {
@@ -84,11 +82,11 @@ public class Product {
         this.carbohydrate = carbohydrate;
     }
 
-    public double getImageUri() {
+    public String getImageUri() {
         return imageUri;
     }
 
-    public void setImageUri(double imageUri) {
+    public void setImageUri(String imageUri) {
         this.imageUri = imageUri;
     }
 }
