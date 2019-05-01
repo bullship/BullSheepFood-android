@@ -1,12 +1,15 @@
 package com.bullsheep.bullsheepfood_android.ui.login;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.bullsheep.bullsheepfood_android.R;
 import com.facebook.CallbackManager;
@@ -29,14 +32,26 @@ public class LoginFragment extends Fragment {
 
     private CallbackManager callbackManager;
     private LoginButton facebookLoginButton;
+
     private TextInputEditText loginEt;
     private TextInputEditText passwordEt;
-    private MaterialButton submitButton;
+    private ProgressBar loadingIndicator;
+
+    private LoginListener loginListener;
 
     public LoginFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof LoginListener) {
+            this.loginListener = (LoginListener) context;
+        } else {
+            throw new IllegalStateException("Activity should implement LoginListener interface");
+        }
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -57,9 +72,18 @@ public class LoginFragment extends Fragment {
     private void initUi(View rootView) {
         loginEt = rootView.findViewById(R.id.login_et);
         passwordEt = rootView.findViewById(R.id.password_et);
-        submitButton = rootView.findViewById(R.id.login_submit_btn);
+        loadingIndicator = rootView.findViewById(R.id.loading_indicator);
+        MaterialButton submitButton = rootView.findViewById(R.id.login_submit_btn);
+        submitButton.setOnClickListener(view -> login());
         facebookLoginButton = rootView.findViewById(R.id.fb_login_button);
         setupFacebookLogin();
+    }
+
+    private void login() {
+        if (!isEmpty(passwordEt, loginEt)) {
+            loadingIndicator.setVisibility(View.VISIBLE);
+            loginListener.onLoginSucceed(loginEt.getText().toString(), passwordEt.getText().toString());
+        }
     }
 
     private void setupFacebookLogin() {
@@ -69,6 +93,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "onSuccess: " + loginResult.getAccessToken().getToken());
+                loginListener.onFacebookLoginSucceed(null);
             }
 
             @Override
@@ -83,10 +108,26 @@ public class LoginFragment extends Fragment {
         });
     }
 
+    private boolean isEmpty(@NonNull EditText... editTexts) {
+        boolean isEmpty = false;
+        for (EditText editText : editTexts) {
+            if (editText.getText().toString().trim().length() == 0) {
+                editText.setError(getActivity().getString(R.string.error_field_required));
+                isEmpty = true;
+            }
+        }
+        return isEmpty;
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        loginListener = null;
+    }
 }
