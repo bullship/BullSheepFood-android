@@ -1,35 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/stats__recycler"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.stats.StatsFragment">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/stats__recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginEnd="@dimen/small_margin"
-        android:layout_marginStart="@dimen/small_margin"
-        android:layout_marginBottom="@dimen/stats_recycler_bottom_margin"/>
-
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottom_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
-        app:hideOnScroll="true"
-        app:fabAlignmentMode="end"
-        android:layout_gravity="bottom"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_anchor="@id/bottom_app_bar"
-        app:fabSize="normal"
-        android:src="@drawable/ic_add_24dp"/>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    android:layout_marginStart="@dimen/small_margin"
+    android:layout_marginTop="@dimen/small_margin"
+    android:layout_marginEnd="@dimen/small_margin"
+    android:layout_marginBottom="@dimen/stats_recycler_bottom_margin" />
