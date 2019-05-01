@@ -24,4 +24,9 @@
     <string name="label_submit">Submit</string>
 
     <string name="error_field_required">This field is required</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+
+    <string name="facebook_app_id">414549609277141</string>
+    <string name="fb_login_protocol_scheme">fb414549609277141</string>
 </resources>
