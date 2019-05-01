@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bullsheep.bullsheepfood_android.R;
 import com.bullsheep.bullsheepfood_android.ui.AddFoodFragment;
@@ -27,6 +28,7 @@ public class ActionDialogFragment extends AppCompatDialogFragment {
     private static final int BOTTOM_MARGIN_IN_DP = 75;
 
     private TextView addItemTv;
+    private TextView addSchedule;
 
     @Nullable
     @Override
@@ -56,12 +58,18 @@ public class ActionDialogFragment extends AppCompatDialogFragment {
 
     private void initUI(View view) {
         addItemTv = view.findViewById(R.id.add_item);
+        addSchedule = view.findViewById(R.id.add_schedule);
         initClickListeners();
     }
 
     private void initClickListeners() {
         addItemTv.setOnClickListener(view -> {
             startFragment(new AddFoodFragment());
+            dismiss();
+        });
+
+        addSchedule.setOnClickListener(view -> {
+            Toast.makeText(getActivity(), getString(R.string.not_implemented_text), Toast.LENGTH_SHORT).show();
             dismiss();
         });
     }

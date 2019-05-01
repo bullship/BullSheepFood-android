@@ -5,6 +5,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bullsheep.bullsheepfood_android.R;
 import com.bullsheep.bullsheepfood_android.ui.login.LoginFragment;
@@ -58,6 +59,12 @@ public class MainActivity extends AppCompatActivity implements LoginListener {
                 break;
             case R.id.nav_stats:
                 navigateToFragment(new StatsFragment(), true);
+                break;
+            case R.id.nav_scan:
+                navigateToFragment(new AddFoodFragment(), true);
+                break;
+            case R.id.nav_schedule:
+                Toast.makeText(this, getString(R.string.not_implemented_text), Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
