@@ -29,4 +29,8 @@
 
     <string name="facebook_app_id">414549609277141</string>
     <string name="fb_login_protocol_scheme">fb414549609277141</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ration">Ration</string>
 </resources>
