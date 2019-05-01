@@ -1,4 +1,4 @@
-package com.bullsheep.bullsheepfood_android.ui;
+package com.bullsheep.bullsheepfood_android.ui.add_food;
 
 
 import android.content.Intent;
@@ -12,10 +12,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bullsheep.bullsheepfood_android.R;
-import com.bullsheep.bullsheepfood_android.dto.ProductDTO;
+import com.bullsheep.bullsheepfood_android.model.Product;
+import com.bullsheep.bullsheepfood_android.ui.ParseUtil;
+import com.bullsheep.bullsheepfood_android.ui.utils.ActivityUtils;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
@@ -26,6 +29,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -46,6 +50,10 @@ public class AddFoodFragment extends Fragment {
     private Button submitBtn;
     private ImageView scanIv;
 
+    private ProgressBar loadingIndicator;
+
+    private ProductViewModel productViewModel;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,6 +65,16 @@ public class AddFoodFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initUI(view);
+
+        productViewModel = ViewModelProviders.of(this).get(ProductViewModel.class);
+        productViewModel.isProcessed.observe(this, isProcessed -> {
+            if (isProcessed) {
+                loadingIndicator.setVisibility(View.GONE);
+                getActivity().getSupportFragmentManager().popBackStack();
+            } else {
+                loadingIndicator.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     private void initUI(View view) {
@@ -72,6 +90,7 @@ public class AddFoodFragment extends Fragment {
         carbsEt = view.findViewById(R.id.add_food_carbs_et);
         kCalEt = view.findViewById(R.id.add_food_kcal_et);
         submitBtn = view.findViewById(R.id.fragment_add_food_submit_btn);
+        loadingIndicator = view.findViewById(R.id.loading_indicator);
     }
 
     private void initClickListeners() {
@@ -105,10 +124,10 @@ public class AddFoodFragment extends Fragment {
             return;
         }
 
-        ProductDTO product = readData();
+        ActivityUtils.hideKeyboard(getActivity());
+        Product product = readData();
         Log.i(TAG, "submitData: " + product);
-        // TODO: 30.04.2019 send to back
-        getActivity().getSupportFragmentManager().popBackStack();
+        productViewModel.saveProduct(product);
     }
 
 
@@ -166,15 +185,13 @@ public class AddFoodFragment extends Fragment {
         fatsEt.setText(ParseUtil.parseFat(text));
     }
 
-    private ProductDTO readData() {
-        ProductDTO productDTO = new ProductDTO();
-        productDTO.setName(nameEt.getText().toString());
-        productDTO.setProteins(Float.valueOf(proteinsEt.getText().toString()));
-        productDTO.setFats(Float.valueOf(fatsEt.getText().toString()));
-        productDTO.setCarbs(Float.valueOf(carbsEt.getText().toString()));
-        productDTO.setCal(Float.valueOf(kCalEt.getText().toString()));
-
-        return productDTO;
+    private Product readData() {
+        return new Product(
+                nameEt.getText().toString(),
+                Double.valueOf(kCalEt.getText().toString()),
+                Double.valueOf(proteinsEt.getText().toString()),
+                Double.valueOf(fatsEt.getText().toString()),
+                Double.valueOf(carbsEt.getText().toString()));
     }
 
     private boolean isEmpty(@NonNull EditText... editTexts) {

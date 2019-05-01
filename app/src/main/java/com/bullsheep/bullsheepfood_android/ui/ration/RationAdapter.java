@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.bullsheep.bullsheepfood_android.R;
-import com.bullsheep.bullsheepfood_android.dto.ProductDTO;
 import com.bullsheep.bullsheepfood_android.dto.RationDTO;
+import com.bullsheep.bullsheepfood_android.model.Product;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class RationAdapter extends RecyclerView.Adapter<RationAdapter.RationViewHolder> {
 
@@ -48,7 +48,7 @@ public class RationAdapter extends RecyclerView.Adapter<RationAdapter.RationView
 
         holder.titleTv.setText(ration.getTitle());
 
-        List<ProductDTO> products = ration.getProducts();
+        List<Product> products = ration.getProducts();
         holder.nutrientsTv.setText("Proteins: " + calculateProteins(products) +
                 ", Fats: " + calculateFats(products) +
                 ", Carbs: " + calculateCarbs(products));
@@ -64,34 +64,34 @@ public class RationAdapter extends RecyclerView.Adapter<RationAdapter.RationView
         return rations != null ? rations.size() : 0;
     }
 
-    private float calculateFats(@NonNull List<ProductDTO> products) {
+    private float calculateFats(@NonNull List<Product> products) {
         float result = 0;
-        for (ProductDTO product : products) {
-            result += product.getFats();
+        for (Product product : products) {
+            result += product.getFat();
         }
         return result;
     }
 
-    private float calculateProteins(@NonNull List<ProductDTO> products) {
+    private float calculateProteins(@NonNull List<Product> products) {
         float result = 0;
-        for (ProductDTO product : products) {
-            result += product.getProteins();
+        for (Product product : products) {
+            result += product.getProtein();
         }
         return result;
     }
 
-    private float calculateCarbs(@NonNull List<ProductDTO> products) {
+    private float calculateCarbs(@NonNull List<Product> products) {
         float result = 0;
-        for (ProductDTO product : products) {
-            result += product.getCarbs();
+        for (Product product : products) {
+            result += product.getCarbohydrate();
         }
         return result;
     }
 
-    private float calculateKCal(@NonNull List<ProductDTO> products) {
+    private float calculateKCal(@NonNull List<Product> products) {
         float result = 0;
-        for (ProductDTO product : products) {
-            result += product.getCal();
+        for (Product product : products) {
+            result += product.getkCal();
         }
         return result;
     }

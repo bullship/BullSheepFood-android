@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bullsheep.bullsheepfood_android.R;
+import com.bullsheep.bullsheepfood_android.ui.add_food.AddFoodFragment;
 import com.bullsheep.bullsheepfood_android.ui.login.LoginFragment;
 import com.bullsheep.bullsheepfood_android.ui.login.LoginListener;
 import com.bullsheep.bullsheepfood_android.ui.ration.RationFragment;

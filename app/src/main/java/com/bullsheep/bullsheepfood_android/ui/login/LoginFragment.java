@@ -59,6 +59,7 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
         callbackManager = CallbackManager.Factory.create();
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
+
         initUi(rootView);
         return rootView;
     }

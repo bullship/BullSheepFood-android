@@ -5,19 +5,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.bullsheep.bullsheepfood_android.R;
-import com.bullsheep.bullsheepfood_android.dto.ProductDTO;
+import com.bullsheep.bullsheepfood_android.model.Product;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class RationDetailAdapter extends RecyclerView.Adapter<RationDetailAdapter.RationDetailViewHolder> {
 
-    private List<ProductDTO> products;
+    private List<Product> products;
 
-    public RationDetailAdapter(List<ProductDTO> products) {
+    public RationDetailAdapter(List<Product> products) {
         this.products = products;
     }
 
