@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_in, R.anim.slide_out)
                     .replace(R.id.fragment_container, new StatsFragment())
                     .commit();
         }

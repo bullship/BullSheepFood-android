@@ -71,6 +71,7 @@ public class ActionDialogFragment extends AppCompatDialogFragment {
             getActivity()
                     .getSupportFragmentManager()
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_in, R.anim.slide_out)
                     .addToBackStack(null)
                     .replace(R.id.fragment_container, fragment)
                     .commit();
