@@ -6,21 +6,20 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.bullsheep.bullsheepfood_android.R;
-import com.bullsheep.bullsheepfood_android.ui.login.LoginFragment;
 import com.bullsheep.bullsheepfood_android.ui.login.LoginListener;
 import com.bullsheep.bullsheepfood_android.ui.ration.RationFragment;
 import com.bullsheep.bullsheepfood_android.ui.stats.StatsFragment;
-import com.bullsheep.bullsheepfood_android.ui.utils.ActivityUtils;
 import com.bullsheep.bullsheepfood_android.ui.stats.actions.ActionDialogFragment;
+import com.bullsheep.bullsheepfood_android.ui.utils.ActivityUtils;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity implements LoginListener {
-    private Fragment currentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements LoginListener {
 
         // last visible fragment is always retained. if there are no such - show main fragment
         if (savedInstanceState == null) {
-            navigateToFragment(new StatsFragment());
+            navigateToFragment(new StatsFragment(), false);
         }
         initUi();
     }
@@ -56,10 +55,10 @@ public class MainActivity extends AppCompatActivity implements LoginListener {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_ration:
-                navigateToFragment(new RationFragment());
+                navigateToFragment(new RationFragment(), true);
                 break;
             case R.id.nav_stats:
-                navigateToFragment(new StatsFragment());
+                navigateToFragment(new StatsFragment(), true);
                 break;
             default:
                 break;
@@ -67,40 +66,30 @@ public class MainActivity extends AppCompatActivity implements LoginListener {
         return super.onOptionsItemSelected(item);
     }
 
-    private void navigateToFragment(Fragment fragment) {
-        if (currentFragment == null || !fragment.getClass().equals(currentFragment.getClass())) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .setCustomAnimations(R.anim.slide_in, R.anim.slide_out)
-                    .replace(R.id.fragment_container, new LoginFragment())
-                    .commit();
+    private void navigateToFragment(Fragment fragment, boolean addToBackstack) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                .beginTransaction()
+                .setCustomAnimations(R.anim.slide_in, R.anim.slide_out)
+                .replace(R.id.fragment_container, fragment);
+
+        if (addToBackstack) {
+            fragmentTransaction.addToBackStack(null);
         }
+
+        fragmentTransaction.commit();
+
     }
 
     @Override
     public void onFacebookLoginSucceed(String token) {
         // TODO: 01.05.19 Send to backend via ViewModel
-        setMainFragment();
+        navigateToFragment(new StatsFragment(), false);
     }
 
     @Override
     public void onLoginSucceed(String email, String password) {
         // TODO: 01.05.19 Send to backend via ViewModel
         ActivityUtils.hideKeyboard(this);
-        setMainFragment();
-    }
-
-    private void setMainFragment() {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .setCustomAnimations(R.anim.slide_in, R.anim.slide_out)
-                .replace(R.id.fragment_container, new StatsFragment())
-                .commit();
-                    .setCustomAnimations(R.anim.slide_in, R.anim.slide_out)
-                    .replace(R.id.fragment_container, fragment)
-                    .addToBackStack(null)
-                    .commit();
-            currentFragment = fragment;
-        }
+        navigateToFragment(new StatsFragment(), false);
     }
 }
